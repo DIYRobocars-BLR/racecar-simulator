@@ -14,7 +14,7 @@ class SingleWaypointControl(object):
         bridge = CvBridge()
         cv_image = bridge.imgmsg_to_cv2(data, 'rgb8')
         boundaries = [
-            ([200, 2, 2], [255, 2, 2])
+            ([178, 0, 0], [255, 2, 2])
         ]
         for (lower, upper) in boundaries:
             # create NumPy arrays from the boundaries
@@ -28,8 +28,6 @@ class SingleWaypointControl(object):
 
             masked_image_msg = bridge.cv2_to_imgmsg(output, 'rgb8')
             self.segmented_img_pub.publish(masked_image_msg)
-
-        rospy.loginfo(rospy.get_caller_id() + "RGB: I heard %s", cv_image)
 
     def point_cloud_callback(self, data):
         pass
