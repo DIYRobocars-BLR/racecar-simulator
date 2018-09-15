@@ -43,7 +43,7 @@ class Mover(object):
 
         self.pub = rospy.Publisher('/vesc/high_level/ackermann_cmd_mux/input/nav_0', AckermannDriveStamped,
                                    queue_size=10)
-        self.segmented_img_pub = rospy.Publisher("/mover/segmented_image", Image, queue_size=10)
+        self.segmented_img_pub = rospy.Publisher("/mover/masked_image", Image, queue_size=10)
         rospy.Subscriber("/camera/zed/color/image_raw", Image, self.rgb_callback)
         rospy.Subscriber("/camera/zed/depth_registered/points", PointCloud2, self.point_cloud_callback)
         rospy.Subscriber("/camera/zed/depth/camera_info", CameraInfo, self.depth_callback)
