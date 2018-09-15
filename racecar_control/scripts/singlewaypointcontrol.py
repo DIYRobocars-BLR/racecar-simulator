@@ -8,7 +8,7 @@ from cv_bridge import CvBridge
 from sensor_msgs.msg import Image, PointCloud2, CameraInfo
 
 
-class Mover(object):
+class SingleWaypointControl(object):
 
     def rgb_callback(self, data):
         bridge = CvBridge()
@@ -43,7 +43,7 @@ class Mover(object):
 
         self.pub = rospy.Publisher('/vesc/high_level/ackermann_cmd_mux/input/nav_0', AckermannDriveStamped,
                                    queue_size=10)
-        self.segmented_img_pub = rospy.Publisher("/mover/masked_image", Image, queue_size=10)
+        self.segmented_img_pub = rospy.Publisher("/single_waypoint_control/segmented_image", Image, queue_size=10)
         rospy.Subscriber("/camera/zed/color/image_raw", Image, self.rgb_callback)
         rospy.Subscriber("/camera/zed/depth_registered/points", PointCloud2, self.point_cloud_callback)
         rospy.Subscriber("/camera/zed/depth/camera_info", CameraInfo, self.depth_callback)
@@ -67,6 +67,6 @@ class Mover(object):
 
 if __name__ == '__main__':
     try:
-        Mover()
+        SingleWaypointControl()
     except rospy.ROSInterruptException:
         pass
