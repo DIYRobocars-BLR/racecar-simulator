@@ -14,7 +14,7 @@ class SingleWaypointControl(object):
         bridge = CvBridge()
         cv_image = bridge.imgmsg_to_cv2(data, 'rgb8')
         boundaries = [
-            ([255, 2, 2], [255, 2, 2])
+            ([200, 2, 2], [255, 2, 2])
         ]
         for (lower, upper) in boundaries:
             # create NumPy arrays from the boundaries
