@@ -42,7 +42,7 @@ def vels(speed,turn):
 if __name__=="__main__":
   settings = termios.tcgetattr(sys.stdin)
   pub = rospy.Publisher('/vesc/ackermann_cmd_mux/input/navigation', AckermannDriveStamped)
-  rospy.init_node('keyop')
+  rospy.init_node('move')
 
   x = 0
   th = 0
