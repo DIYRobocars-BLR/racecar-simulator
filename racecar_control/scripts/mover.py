@@ -9,7 +9,7 @@ def mover():
     speed = 0.5
     turn = 0.25
 
-    pub = rospy.Publisher('/vesc/ackermann_cmd_mux/input/navigation', AckermannDriveStamped, queue_size=10)
+    pub = rospy.Publisher('/vesc/high_level/ackermann_cmd_mux/input/nav_0', AckermannDriveStamped, queue_size=10)
     rospy.init_node('mover', anonymous=True)
     rate = rospy.Rate(10)  # 10hz
     while not rospy.is_shutdown():
